@@ -1,0 +1,31 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "NodeJS Backend Server",
+    "type": "module",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "dev": "nodemon server.js",
+        "beautiful": "prettier --single-quote --trailing-comma all --tab-width 4 --write 'src/**/*.{js,css,json}'",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^6.0.0",
+        "body-parser": "^2.2.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.5.0",
+        "ejs": "^3.1.10",
+        "express": "^5.1.0",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.16.0",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.0",
+        "prettier": "3.5.3"
+    }
+}
