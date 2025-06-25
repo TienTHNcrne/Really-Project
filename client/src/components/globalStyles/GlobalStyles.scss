@@ -1,0 +1,20 @@
+@import "normalize.css";
+:root {
+  --font-family: "ProximaNova", sans-serif;
+  --default-layout-header-height: 60px;
+  --default-layout-width: 1150px;
+  --default-layout-horizontal-spacer: 24px;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+
+  background-color: white;
+}
+a {
+  color: wheat;
+}
+
+.main {
+  position: relative;
+  left: 250px;
+}

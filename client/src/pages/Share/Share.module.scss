@@ -1,0 +1,120 @@
+.main {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  h2 {
+    font-size: 28px;
+    text-align: center;
+    color: #2c3e50;
+  }
+
+  hr {
+    width: 50%;
+    height: 2px;
+    background-color: #3498db;
+    border: none;
+    margin: 0 auto;
+  }
+
+  .option {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    h3 {
+      font-size: 18px;
+      color: #333;
+    }
+
+    button {
+      background: #ecf0f1;
+      border: 1px solid #bbb;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #2c3e50;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #dfe6e9;
+      }
+    }
+  }
+  h4 {
+    color: #3498db;
+    font-size: 16px;
+    font-style: italic;
+  }
+  textarea {
+    height: 150px;
+    padding: 15px;
+    font-size: 17px;
+    border-radius: 12px;
+    border: 2px solid #dcdcdc;
+    resize: none;
+
+    &::placeholder {
+      color: #aaa;
+      font-style: italic;
+    }
+  }
+
+  button {
+    align-self: center;
+    background: #3498db;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      background: #2980b9;
+    }
+  }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+      background: #ecf9f1;
+      border-left: 5px solid #3498db;
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-size: 20px;
+      color: #2c3e50;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+      .feel {
+        display: block;
+        font-size: 14px;
+        color: #666;
+        margin-top: 6px;
+        font-style: italic;
+      }
+      .comment_of_post {
+        font-size: 15px;
+      }
+    }
+  }
+}

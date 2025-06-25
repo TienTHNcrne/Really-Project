@@ -1,0 +1,14 @@
+.app {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+  padding: 20px;
+}
+
+.shifted {
+  margin-left: 250px;
+}

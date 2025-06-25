@@ -1,0 +1,25 @@
+.wrapper {
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.contain {
+  display: flex;
+
+  min-height: calc(100vh - 70px);
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-top: 70px;
+  margin-left: 250px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  margin-right: 10px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s ease-in-out;
+}
+.content_full {
+  margin-left: 10px;
+}
