@@ -1,7 +1,10 @@
 import express from "express";
-import { Register } from "../Controllers/userController.js";
+import { Register, Login } from "../Controllers/userController.js";
 const route = express.Router();
 route.get("/", (req, res) => {
-    res.status(200).json(" heelo");
+    return res.status(200).json("oek");
 });
+route.post("/register", Register);
+route.post("/Login", Login);
+
 export default route;

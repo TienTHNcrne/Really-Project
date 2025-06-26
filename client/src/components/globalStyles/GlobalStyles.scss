@@ -1,20 +1,24 @@
 @import "normalize.css";
 :root {
-  --font-family: "ProximaNova", sans-serif;
-  --default-layout-header-height: 60px;
-  --default-layout-width: 1150px;
-  --default-layout-horizontal-spacer: 24px;
+    --font-family: "ProximaNova", sans-serif;
+    --default-layout-header-height: 60px;
+    --default-layout-width: 1150px;
+    --default-layout-horizontal-spacer: 24px;
+}
+* {
+    margin: 0;
+    padding: 0;
 }
 body {
-  font-family: "Segoe UI", sans-serif;
+    font-family: "Segoe UI", sans-serif;
 
-  background-color: white;
+    background-color: white;
 }
 a {
-  color: wheat;
+    color: wheat;
 }
 
 .main {
-  position: relative;
-  left: 250px;
+    position: relative;
+    left: 250px;
 }

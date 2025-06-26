@@ -1,29 +1,28 @@
-//import
-import express from "express";
-import mongoose from "mongoose";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
+import express from "express";
+import cors from "cors";
 import bodyParser from "body-parser";
 import route from "./Routers/userRouter.js";
-//
+import connection from "./config/database.js";
+
 dotenv.config();
+
 const app = express();
+const PORT = process.env.PORT || 8081;
+
+app.use(cors());
 app.use(bodyParser.json());
-
-const PORT = process.env.PORT || 8000;
-const MONGO_URL = process.env.MONGO_URL;
-
-mongoose
-    .connect(MONGO_URL)
-    .then(() => {
-        console.log("MongoDB is connected");
-        app.listen(PORT, () => {
-            `server is running http://localhost:${PORT}`;
-        });
-    })
-    .catch((error) => {
-        console.log("MongoDB isn't connected");
-    });
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/v1/api", route);
-app.listen(5000, () =>
-    console.log(`server is running http://localhost:${PORT}`)
-);
+
+(async () => {
+    try {
+        await connection();
+        app.listen(PORT, () => {
+            console.log(`✅ Server is running at http://localhost:${PORT}`);
+        });
+    } catch (error) {
+        console.error("❌ Failed to connect:", error);
+    }
+})();

@@ -2,12 +2,30 @@ import React, { use, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.scss";
 import Login from "../Login/Login";
+import { notification } from "antd";
+import { createUserApi } from "../../util/api.js";
 export default function Register() {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
     const [pass2, setPass2] = useState("");
     const [name, setName] = useState("");
     const nextPage = useNavigate();
+    const onFinish = async (e) => {
+        e.preventDefault();
+        if (!name.trim()) return alert("Vui lòng nhập tên");
+        if (!email.trim()) return alert("Vui lòng nhập email");
+        if (pass !== pass2) return alert("Mật khẩu nhập lại chưa khớp");
+
+        try {
+            const res = await createUserApi(name, email, pass);
+            console.log(res);
+            if (res?.status === 200) {
+                notification.success({ message: "create", description: "oke" });
+            } else {
+                notification.success({ message: "error", description: "oke" });
+            }
+        } catch (error) {}
+    };
     return (
         <div className={styles.Login}>
             <form className={styles.Login_form}>
@@ -54,22 +72,7 @@ export default function Register() {
                     />
                 </div>
                 <div className={styles.end}>
-                    <button
-                        onClick={(e) => {
-                            e.preventDefault();
-                            if (!name.trim()) return alert("Vui lòng nhập tên");
-                            if (!email.trim())
-                                return alert("Vui lòng nhập email");
-                            if (pass !== pass2)
-                                return alert("Mật khẩu nhập lại chưa khớp");
-                            // Checking an email used to be signed in. call API and DB
-
-                            alert("thanks");
-                            nextPage("/");
-                        }}
-                    >
-                        Create
-                    </button>
+                    <button onClick={onFinish}>Create</button>
                     <div className={styles.add}>
                         <p>Do you have an account? </p>
                         <Link to="/Login">Sign in</Link>
