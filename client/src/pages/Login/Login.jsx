@@ -2,11 +2,25 @@ import React, { useState } from "react";
 import styles from "./Login.module.scss";
 import Register from "../Register/Register";
 import { Link, useNavigate } from "react-router-dom";
+import { FindUserApi } from "../../util/api";
+import { message, notification } from "antd";
 export default function Login() {
     const [email, setEmail] = useState("");
     const [pass, setPass] = useState("");
-
     const nextPage = useNavigate();
+    const onFinish = async (e) => {
+        e.preventDefault();
+        const res = await FindUserApi(email, pass);
+        const EC = res?.data?.result?.EC;
+        console.log(EC);
+        if (EC === 1)
+            return notification.error({
+                message: "MAT KHAU HOAC EMAIL SAI",
+                description: "XIN VUI LONG NHAP LAI",
+            });
+        nextPage("/");
+    };
+
     return (
         <div className={styles.Login}>
             <form className={styles.Login_form}>
@@ -51,18 +65,7 @@ export default function Login() {
                     </div>
                 </div>
                 <div className={styles.end}>
-                    <button
-                        onClick={(e) => {
-                            e.preventDefault();
-                            if (email !== "" && pass !== "") alert("thanks");
-                            else alert("hãy nhập đủ");
-
-                            alert("thanks");
-                            nextPage("/");
-                        }}
-                    >
-                        Sign in
-                    </button>
+                    <button onClick={onFinish}>Sign in</button>
                     <div className={styles.add}>
                         <p>Don't have an account? </p>
                         <Link to="/Register">Sign up</Link>

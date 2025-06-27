@@ -11,7 +11,6 @@ import About from "./pages/About/About";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import { ConfigProvider } from "antd";
-import "antd/dist/reset.css";
 
 const router = createBrowserRouter([
     {

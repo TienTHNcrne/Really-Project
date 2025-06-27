@@ -4,5 +4,10 @@ const createUserApi = (name, email, password) => {
 
     return axios.post(URL_API, { name, email, password });
 };
+const FindUserApi = (email, password) => {
+    const URL_API = "http://localhost:8081/v1/api/Login";
 
-export { createUserApi };
+    return axios.post(URL_API, { email, password });
+};
+
+export { createUserApi, FindUserApi };

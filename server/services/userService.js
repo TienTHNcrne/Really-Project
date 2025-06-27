@@ -23,10 +23,15 @@ export const CreateUserService = async (name, email, password) => {
 export const FindUserService = async (email, password) => {
     try {
         const user = await users.findOne({ email: email });
-        if (!user) return { status: 404, message: "Don't find an account" };
+        if (!user) {
+            return { status: 200, EC: 1, message: "Không tìm thấy tài khoản" };
+        }
+
         const matchPass = await bcrypt.compare(password, user.password);
-        if (!matchPass)
-            return { status: 404, message: "Don't find a password" };
+        if (!matchPass) {
+            return { status: 200, EC: 1, message: "Mật khẩu không chính xác" };
+        }
+
         const payload = {
             name: user.name,
             email: user.email,
@@ -34,14 +39,15 @@ export const FindUserService = async (email, password) => {
         const accessToken = jwt.sign(payload, process.env.JWT_SCRET, {
             expiresIn: process.env.JWT_DAY,
         });
+
         return {
             status: 200,
-            message: "oke",
+            EC: 2,
+            message: "Đăng nhập thành công",
             user: { email: user.email, name: user.name },
             accessToken,
         };
     } catch (error) {
-        console.log(error);
-        return null;
+        console.log("Lỗi FindUserService:", error);
     }
 };
