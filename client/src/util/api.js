@@ -1,13 +1,17 @@
 import axios from "axios";
-const createUserApi = (name, email, password) => {
-    const URL_API = "http://localhost:8081/v1/api/Register";
-
-    return axios.post(URL_API, { name, email, password });
-};
-const FindUserApi = (email, password) => {
-    const URL_API = "http://localhost:8081/v1/api/Login";
-
-    return axios.post(URL_API, { email, password });
+const HTAPI = process.env.REACT_APP_URL;
+export const createUserApi = (name, email, password) => {
+    return axios.post(`${HTAPI}/user/Register`, { name, email, password });
 };
 
-export { createUserApi, FindUserApi };
+export const FindUserApi = (email, password) => {
+    return axios.post(`${HTAPI}/user/Login`, { email, password });
+};
+
+export const Diary_every = (Id) => {
+    return axios.get(`${HTAPI}/Diaries/all`, { params: { Id } });
+};
+
+export const CreateDiary = (data) => {
+    return axios.post(`${HTAPI}/Diaries`, { data });
+};

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./Login.module.scss";
-import Register from "../Register/Register";
 import { Link, useNavigate } from "react-router-dom";
 import { FindUserApi } from "../../util/api";
 import { message, notification } from "antd";
@@ -12,12 +11,18 @@ export default function Login() {
         e.preventDefault();
         const res = await FindUserApi(email, pass);
         const EC = res?.data?.result?.EC;
-        console.log(EC);
         if (EC === 1)
             return notification.error({
                 message: "MAT KHAU HOAC EMAIL SAI",
                 description: "XIN VUI LONG NHAP LAI",
             });
+        notification.success({
+            message: "he he",
+            description: "ho ho",
+        });
+        localStorage.setItem("userId", res?.data?.result?.payload?.userId);
+        localStorage.setItem("nameUser", res?.data?.result?.payload?.name);
+        console.log(res?.data?.result?.payload?.name);
         nextPage("/");
     };
 

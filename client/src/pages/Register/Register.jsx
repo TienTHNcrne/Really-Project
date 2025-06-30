@@ -21,6 +21,8 @@ export default function Register() {
             console.log(res);
             if (res?.status === 200) {
                 notification.success({ message: "create", description: "oke" });
+                localStorage.setItem("userId", res?.data?._id);
+                localStorage.setItem("nameUser", res?.data?.name);
             } else {
                 notification.success({ message: "error", description: "oke" });
             }

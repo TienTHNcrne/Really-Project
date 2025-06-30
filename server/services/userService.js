@@ -6,7 +6,6 @@ dotenv.config();
 export const CreateUserService = async (name, email, password) => {
     //create an Object
     try {
-        //hash password
         const saltRounds = 10;
         const hashPass = await bcrypt.hash(password, saltRounds);
         //save account
@@ -35,6 +34,7 @@ export const FindUserService = async (email, password) => {
         const payload = {
             name: user.name,
             email: user.email,
+            userId: user._id,
         };
         const accessToken = jwt.sign(payload, process.env.JWT_SCRET, {
             expiresIn: process.env.JWT_DAY,
@@ -44,7 +44,7 @@ export const FindUserService = async (email, password) => {
             status: 200,
             EC: 2,
             message: "Đăng nhập thành công",
-            user: { email: user.email, name: user.name },
+            payload,
             accessToken,
         };
     } catch (error) {

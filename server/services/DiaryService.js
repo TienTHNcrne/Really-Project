@@ -29,6 +29,6 @@ export const GetDiaryByDate = async (UserId, date) => {
 };
 
 export const GetAllDiary = async (UserId) => {
-    const res = await Diary.find({ UserId });
-    return await res.sort({ createdAt: -1 });
+    console.log(UserId);
+    return await Diary.find({ UserId }).sort({ createdAt: -1 });
 };
